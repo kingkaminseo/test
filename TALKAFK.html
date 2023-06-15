@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      * {
+        font-family: "돋움";
+      }
+        .crollingimg {
+          width: 40px;
+          flex: 2;
+          border-radius: 10px 0 0 10px;
+        }
+        .name1 {
+          border-radius:0 10px 10px 0;
+          flex: 2;
+          background-color: rgb(245, 245, 245);
+
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        #csvList {
+          display: inline-block;
+          
+        }
+        #csvList > li {
+          width: 400px;
+          display: flex;
+          border-radius: 10px;
+          box-shadow: 0 10px 30px rgba(67, 67, 67, 0.411);
+          justify-content: center;
+        }
+
+        #csvList {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        #csvList > li {
+          flex: 0 0 auto;
+          width: 400px;
+          margin-right: 2%;
+          margin-bottom: 10px;
+        }
+
+
+    </style>
+    <script src="code.jquery.com_jquery-3.7.0.min.js"></script>
+</head>
+
+<body>
+    <ul class="menu">
+        <li class="mainli">
+            <a href="#" class="mainnav" data-category="맛집">맛집 찾기</a>
+        </li>
+        <li class="mainli">
+            <a href="#" class="mainnav" data-category="숙소">숙소 찾기</a>
+        </li>
+        <li class="mainli">
+            <a href="#" class="mainnav" data-category="관광명소">관광명소 찾기</a>
+        </li>
+    </ul>
+
+    <ul class="simpleul">
+        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '서울')">서울</a></li>
+        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '대전')">대전</a></li>
+        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '대구')">대구</a></li>
+        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '광주')">광주</a></li>
+        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '부산')">부산</a></li>
+        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '경기')">경기</a></li>
+        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '강원')">강원</a></li>
+        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '충북')">충청도</a></li>
+        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '경상도')">경상도</a></li>
+        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '전남')">전라도</a></li>
+        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '제주')">제주</a></li>
+    </ul>
+<img src="" alt="">
+    <ul id="csvList">1231242412</ul>
+<script src="code.jquery.com_jquery-3.7.0.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('.mainnav').click(function(e) {
+    e.preventDefault();
+    var category = $(this).data('category');
+    updateMenu(category);
+  });
+
+  $('.simpleul a').click(function(e) {
+    e.preventDefault();
+    var region = $(this).text().trim();
+    var category = $('.mainnav.active').data('category');
+    if (category) {
+      loadCSV(category, region);
+    }
+  });
+});
+
+function updateMenu(category) {
+  $('.mainnav').removeClass('active');
+  $('.mainnav[data-category="' + category + '"]').addClass('active');
+}
+
+function loadCSV(category, region) {
+  var csvFilePath = "맛집 찾기/" + category + region + ".csv";
+
+  $.ajax({
+    type: "GET",
+    url: csvFilePath,
+    dataType: "text",
+    success: function(data) {
+      var csvRecords = data.split("\n");
+      var list = $('#csvList');
+      list.empty();
+
+      for (var i = 0; i < csvRecords.length; i++) {
+        var csvRecord = csvRecords[i].split(",");
+        if (csvRecord.length >= 4) {
+          var name = csvRecord[0];
+          var rating = csvRecord[1];
+          var address = csvRecord[2];
+          var imageUrl = csvRecord[3].replace(/"/g, '');
+
+          var listItem = $('<li>');
+          listItem.append('<img src="' + imageUrl + '" alt="' + name + '" class="crollingimg">');
+
+          var infoDiv = $('<div class="name1">');
+          infoDiv.append('<p class="name">' + name + '</p>');
+          infoDiv.append('<p class="star">별점: ' + rating + '</p>');
+          infoDiv.append('<p class="adress">주소: ' + address + '</p>');
+
+          listItem.append(infoDiv);
+          list.append(listItem);
+        }
+      }
+    },
+    error: function() {
+      console.log("Failed to load CSV file.");
+    }
+  });
+}
+
+</script>
+           

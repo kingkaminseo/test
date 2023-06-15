@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>new APm</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /*main airplanemode 텍스트*/ @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Sunflower:wght@500&display=swap');
+        /*main apm 밑 서브 텍스트*/@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+        /*main logo 텍스트*/@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
+        /*메뉴바 텍스트*/@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+        .crollingimg {
+          width: 40px;
+          flex: 2;
+          border-radius: 10px 0 0 10px;
+        }
+        .name1 {
+          border-radius:0 10px 10px 0;
+          flex: 2;
+          background-color: rgb(245, 245, 245);
+
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        #csvList {
+          display: inline-block;
+          
+        }
+        #csvList > li {
+          width: 400px;
+          display: flex;
+          border-radius: 10px;
+          box-shadow: 0 10px 30px rgba(67, 67, 67, 0.411);
+          justify-content: center;
+        }
+
+        #csvList {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        #csvList > li {
+          flex: 0 0 auto;
+          width: 400px;
+          margin-right: 2%;
+          margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<script>
+    function toggleDiv(event) {
+event.preventDefault();
+
+var div = document.getElementById("myDiv");
+var currentDisplay = div.style.display;
+
+if (currentDisplay === "none") {
+    div.style.display = "block";
+} else {
+    div.style.display = "none";
+}
+}
+
+function changeColor(event) {
+// 모든 <a> 태그에서 'selected' 클래스 제거
+const links = document.querySelectorAll('.simpleul a','.mainli a');
+links.forEach(link => link.classList.remove('selected','selected'));
+
+// 클릭한 <a> 태그에 'selected' 클래스 추가
+const clickedLink = event.target;
+clickedLink.classList.add('selected');
+}
+
+</script>
+<body>
+<div class="all">
+    <div class="mainimg">
+        <div>
+            <img src="image/seoul-71469.jpg" id="seoul-bridge">
+            <img src="image/seoul-gcc5908476_1920.jpg" alt="southmountin">
+            <img src="image/korea-1095361.jpg" id="geoungboakgoong">
+        </div>
+        <div style="color: white;" class="maintextdeco">
+            <h1>APM</h1>
+            <h1 style="font-family: 'Pacifico', cursive;">AirPlaneMode</h1>
+            <p>저희는 여행계획을 쉽게 만들어 줄 수 있는 APM입니다.<br>
+                여러분의 여행 계획을 환상적으로 만들어보세요</p>
+        </div>
+    </div>
+    <div class="mainpage">
+        
+        <div class="page1">
+            
+            <div class="pageleft">
+                
+                <div class="simple">
+                    <h1>빠르고 쉽게 알아보기</h1>
+                    <h2>여기어때~?</h2>
+                    <ul class="menu">
+                        <li class="mainli">
+                            <a href="#" class="mainnav" data-category="맛집">맛집 찾기</a>
+                        </li>
+                        <li class="mainli">
+                            <a href="#" class="mainnav" data-category="숙소">관광명소 찾기</a>
+                        </li>
+                        <li class="mainli">
+                            <a href="#" class="mainnav" data-category="관광명소">숙소 찾기</a>
+                        </li>
+                    </ul>
+                    
+                    <ul class="simpleul">
+                        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '서울')">서울</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '대전')">대전</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '대구')">대구</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '광주')">광주</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '부산')">부산</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '경기')">경기</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '강원')">강원</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '충청도')">충청도</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '경상도')">경상도</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '전라도')">전라도</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); changeColor(event, '제주')">제주</a></li>
+                    </ul>
+
+                    <ul id="csvList">1231242412</ul>
+                    </div>
+                    <div class="headline">
+                        <div class="headlineslidediv">
+                            <P>APM은여러분의 여행계획으로 멋진여행을 기원합니다~!</P>
+                            <P>APM wishes you a wonderful trip with your travel plans~!</P>
+                            <P>APM は皆さんの旅行計画で素敵な旅行を祈ります~!</P>
+                        </div>
+                        <div class="headlineslidediv2">
+                            <P>#서울 #경기도 #야경 #여수밤바다 #제주도</P>
+                            <P>APM wishes you a wonderful trip with your travel plans~!</P>
+                            <P>APM は皆さんの旅行計画で素敵な旅行を祈ります~!</P>
+                        </div>
+                    </div>
+                <h1 style="font-family: 'Jua', sans-serif; font-weight: 100; position:relative; top: 100px; ">지금 축제 중인 곳</h1>
+                
+                <div class="famous-placeTop">
+                    
+                    <div class="insideidv">
+                        <ul>
+                            <li><div class="famousmaindiv"><div></div><div><a href="#" class="famous-content">경복궁</a></div></div></li>
+                            <li><div class="famousmaindiv"><div></div><div><a href="#" class="famous-content">서울메트로</a></div></div></li>
+                            <li><div class="famousmaindiv"><div></div><div><a href="#" class="famous-content">북한산 국립공원</a></div></div></li>
+                            <li><div class="famousmaindiv"><div></div><div><a href="#" class="famous-content">창덕궁</a></div></div></li>
+                            <li><div class="famousmaindiv"><div></div><div><a href="#" class="famous-content">한국전쟁기념관</a></div></div></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h1>
+                    어디를 갈지 모르겠다면 여긴 어때?
+                </h1>
+            </div>
+            <div class="pageright">
+                    <div class="flip">  
+                    <div class="card">
+                      <!-- 앞면 -->
+                      <div class="front">
+                        <div class="banneradvertisement">
+                            <div class="ad-logo">
+                                
+                                <img src="image/melonicon.png" style="width: 35px;">
+                                <h2>melon</h2>
+                                
+                            </div>
+                            <div class="main-ad-banner">
+                                <img src="https://i.namu.wiki/i/KH55-FFKUnCQCPHddbABxlWkTib4KvTBO_G_xKbJGJJHregLQbN8-edV_2hRNUJOAub0P0slRNWubAT0slA2NQ.webp" style="width: 265px; border-radius: 20px;">
+                            </div>
+                            <div class="ad-footer">
+                                <h1>여행갈때<br>듣기좋은 노래<br>추천해줄게</h1>
+                                <a href="#" class="adbtn"><div class="ad-playbtn">지금 듣기!</div></a>
+                            </div>
+                        </div>
+                      </div>
+                      <!-- 뒷면 -->
+                      <div class="back">
+                        <div style="border: 1px solid green;">
+                            <h1>feat. 여행 갈때 <br> 듣기 좋은 노래 top30</h1>
+                            <div class="backplaylist">
+                                <img src="https://image.bugsm.co.kr/album/images/500/202902/20290291.jpg">
+                                <h2>Don't Flex on me</h2>
+                                <h3> 토일, Skinny Brown<br>feat.제이씨 유카, 김효은</h3>
+                            </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="code.jquery.com_jquery-3.7.0.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('.mainnav').click(function(e) {
+    e.preventDefault();
+    var category = $(this).data('category');
+    updateMenu(category);
+  });
+
+  $('.simpleul a').click(function(e) {
+    e.preventDefault();
+    var region = $(this).text().trim();
+    var category = $('.mainnav.active').data('category');
+    if (category) {
+      loadCSV(category, region);
+    }
+  });
+});
+
+function updateMenu(category) {
+  $('.mainnav').removeClass('active');
+  $('.mainnav[data-category="' + category + '"]').addClass('active');
+}
+
+function loadCSV(category, region) {
+  var csvFilePath = "맛집 찾기/" + category + region + ".csv";
+
+  $.ajax({
+    type: "GET",
+    url: csvFilePath,
+    dataType: "text",
+    success: function(data) {
+      var csvRecords = data.split("\n");
+      var list = $('#csvList');
+      list.empty();
+
+      for (var i = 0; i < csvRecords.length; i++) {
+        var csvRecord = csvRecords[i].split(",");
+        if (csvRecord.length >= 4) {
+          var name = csvRecord[0];
+          var rating = csvRecord[1];
+          var address = csvRecord[2];
+          var imageUrl = csvRecord[3].replace(/"/g, '');
+
+          var listItem = $('<li>');
+          listItem.append('<img src="' + imageUrl + '" alt="' + name + '" class="crollingimg">');
+
+          var infoDiv = $('<div class="name1">');
+          infoDiv.append('<p class="name">' + name + '</p>');
+          infoDiv.append('<p class="star">별점: ' + rating + '</p>');
+          infoDiv.append('<p class="adress">주소: ' + address + '</p>');
+
+          listItem.append(infoDiv);
+          list.append(listItem);
+        }
+      }
+    },
+    error: function() {
+      console.log("Failed to load CSV file.");
+    }
+  });
+}
+
+</script>    
+<script src="custom.js"></script>
+
+
+
+</html>
